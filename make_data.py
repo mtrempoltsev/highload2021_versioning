@@ -52,16 +52,17 @@ def start():
         max = len(to_change) - 1
         for i in range(changes_num):
             data = {
-                "id": to_change[faker.random_int(min=0, max=max)]
+                "id": to_change[faker.random_int(min=0, max=max)],
+                "fields": {}
             }
 
             what = faker.random_int(min=0, max=2)
             if what == 0:
-                data["company"] = faker.company()
+                data["fields"]["company"] = faker.company()
             elif what == 1:
-                data["phone"] = faker.phone_number()
+                data["fields"]["phone"] = faker.phone_number()
             elif what == 2:
-                data["email"] = faker.email()
+                data["fields"]["email"] = faker.email()
 
             json.dump(data, file)
             file.write("\n")

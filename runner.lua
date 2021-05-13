@@ -35,14 +35,11 @@ local function update_data(engine, work_dir)
             break
         end
 
-        local t = engine:get_last(c.id)
-        for k, v in pairs(c) do
-            if k ~= 'id' then
-                t = t:update({{ '=', k, v }})
-            end
+        local updates = {}
+        for k, v in ipairs(c.fields) do
+            table.insert(updates, { '=', k, v })
         end
-
-        engine:update(t)
+        engine:update(c.id, updates)
     end
 end
 

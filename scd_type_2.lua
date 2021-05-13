@@ -42,10 +42,7 @@ local function create_space(name)
 end
 
 local function get_last(self, id)
-    for _, v in self.space:pairs({ id }, 'REQ') do
-        return v
-    end
-    return nil
+    return self.space.index.id:max({ id })
 end
 
 local function get_all(self, id)
@@ -61,9 +58,10 @@ local function insert(self, profile)
     self.space:insert(flatten(profile))
 end
 
-local function update(self, profile)
-    profile = profile:update({{ '=', 'version', clock.time64() }})
-    self.space:replace(profile)
+local function update(self, id, updates)
+    table.insert(updates, { '=', 'version', clock.time64() })
+    local t = get_last(self, id)
+    self.space:insert(t:update(updates))
 end
 
 local function new(name)

@@ -72,8 +72,10 @@ local function insert(self, profile)
     self.space:insert(flatten(profile))
 end
 
-local function update(self, profile)
-    self.space:insert(profile)
+local function update(self, id, updates)
+    table.insert(updates, { '=', 'version', clock.time64() })
+    local t = get_last(self, id)
+    self.space:replace(t:update(updates))
 end
 
 local function new(name)

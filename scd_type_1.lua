@@ -49,8 +49,8 @@ local function insert(self, profile)
     self.space:replace(flatten(profile))
 end
 
-local function update(self, profile)
-    self.space:replace(profile)
+local function update(self, id, updates)
+    self.space:update(id, updates)
 end
 
 local function new(space_name)

@@ -19,7 +19,7 @@ local function next(self)
         return nil, err
     end
 
-    if line == nil then
+    if line == "" then
         return nil
     end
 

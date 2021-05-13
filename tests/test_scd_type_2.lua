@@ -44,7 +44,7 @@ local function run()
     assert(t1.email, 'e1')
     assert(#engine:get_all(p1.id), 1)
 
-    engine:update(t1:update({{ '=', 'email', 'e1u' }}))
+    engine:update('p1', {{ '=', 'email', 'e1u' }})
 
     assert(engine:get_last(p1.id).email, 'e1u')
     assert(#engine:get_all(p1.id), 2)
@@ -58,7 +58,7 @@ local function run()
     assert(t2.email, 'e2')
     assert(#engine:get_all(p2.id), 1)
 
-    engine:update(t2:update({{ '=', 'email', 'e2u' }}))
+    engine:update('p2', {{ '=', 'email', 'e2u' }})
 
     assert(engine:get_last(p2.id).email, 'e2u')
     assert(#engine:get_all(p2.id), 2)

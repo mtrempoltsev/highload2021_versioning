@@ -14,7 +14,7 @@ local function readline(self)
             end
 
             if self.buf == "" then
-                return nil
+                return res
             end
 
             self.pos = 1
