@@ -73,7 +73,6 @@ local function insert(self, profile)
 end
 
 local function update(self, id, updates)
-    table.insert(updates, { '=', 'version', clock.time64() })
     local t = get_last(self, id)
     self.space:replace(t:update(updates))
 end

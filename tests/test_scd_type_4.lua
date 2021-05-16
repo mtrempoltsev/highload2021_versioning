@@ -32,7 +32,13 @@ end
 
 local function assert_not(x, y)
     if x == y then
-        error(string.format('%q ~= %q', x, y))
+        error(string.format('%q == %q', x, y))
+    end
+end
+
+local function assert_less(x, y)
+    if x >= y then
+        error(string.format('%q >= %q', x, y))
     end
 end
 
@@ -50,6 +56,10 @@ local function run()
     assert(#engine:get_all(p1.id), 2)
     assert(engine:get_all(p1.id)[1].email, 'e1u')
     assert(engine:get_all(p1.id)[2].email, 'e1')
+
+    assert_less(
+        engine:get_all(p1.id)[2].version,
+        engine:get_all(p1.id)[1].version)
 
     engine:insert(p2)
     local t2 = engine:get_last(p2.id)
