@@ -88,6 +88,7 @@ end
 local scd_type_list = {
     'scd_type_1',
     'scd_type_2',
+    'scd_type_3',
     'scd_type_4'
 }
 

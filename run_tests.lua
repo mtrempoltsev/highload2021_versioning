@@ -10,6 +10,7 @@ box.cfg({
 local test_list = {
     'test_scd_type_1',
     'test_scd_type_2',
+    'test_scd_type_3',
     'test_scd_type_4'
 }
 
@@ -25,6 +26,8 @@ for _, t in ipairs(test_list) do
             log.error('    %s', res)
         end
     end
+
+    log.info("%s: done", t)
 end
 
 if success then

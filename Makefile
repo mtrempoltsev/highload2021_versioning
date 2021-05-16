@@ -8,10 +8,13 @@ scd_type_1: data
 scd_type_2: data
 	tarantool ./runner.lua scd_type_2 ${RUN_DIR}
 
+scd_type_3: data
+	tarantool ./runner.lua scd_type_3 ${RUN_DIR}
+
 scd_type_4: data
 	tarantool ./runner.lua scd_type_4 ${RUN_DIR}
 
-bench: scd_type_1 scd_type_2 scd_type_4
+bench: scd_type_1 scd_type_2 scd_type_3 scd_type_4
 
 test: data
 	tarantool ./run_tests.lua ${RUN_DIR}

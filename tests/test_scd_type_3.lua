@@ -1,4 +1,4 @@
-local engine = require('scd_type_4').new('test_scd_type_4')
+local engine = require('scd_type_3').new('test_scd_type_3')
 
 local p1 = {
     id = 'p1',
@@ -40,7 +40,6 @@ local function run()
     engine:insert(p1)
     local t1 = engine:get_last(p1.id)
 
-    assert_not(t1.version, nil)
     assert(t1.email, 'e1')
     assert(#engine:get_all(p1.id), 1)
 
@@ -54,7 +53,6 @@ local function run()
     engine:insert(p2)
     local t2 = engine:get_last(p2.id)
 
-    assert_not(t2.version, nil)
     assert(t2.email, 'e2')
     assert(#engine:get_all(p2.id), 1)
 
@@ -68,10 +66,23 @@ local function run()
     engine:update('p2', {{ '=', 'email', 'e2uu' }})
 
     assert(engine:get_last(p2.id).email, 'e2uu')
-    assert(#engine:get_all(p2.id), 3)
+    assert(#engine:get_all(p2.id), 2)
     assert(engine:get_all(p2.id)[1].email, 'e2uu')
     assert(engine:get_all(p2.id)[2].email, 'e2u')
-    assert(engine:get_all(p2.id)[3].email, 'e2')
+
+    engine:update('p2', {{ '=', 'company', 'c2u' }})
+
+    assert(engine:get_last(p2.id).company, 'c2u')
+    assert(#engine:get_all(p2.id), 2)
+    assert(engine:get_all(p2.id)[1].company, 'c2u')
+    assert(engine:get_all(p2.id)[2].company, 'c2')
+
+    engine:update('p2', {{ '=', 'phone', 'ph2u' }})
+
+    assert(engine:get_last(p2.id).phone, 'ph2u')
+    assert(#engine:get_all(p2.id), 2)
+    assert(engine:get_all(p2.id)[1].phone, 'ph2u')
+    assert(engine:get_all(p2.id)[2].phone, 'ph2')
 
     return true
 end
