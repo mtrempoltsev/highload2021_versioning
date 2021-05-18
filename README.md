@@ -37,17 +37,17 @@ make test
 ### Запуск демо
 
 ```
-make sct_type_1
+make scd_type_1
 ```
 
 ```
-make sct_type_2
+make scd_type_2
 ```
 
 ```
-make sct_type_3
+make scd_type_3
 ```
 
 ```
-make sct_type_4
+make scd_type_4
 ```
